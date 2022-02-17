@@ -1,0 +1,281 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /*\
+ * Click `Run` to execute the snippet below!\
+ */\
+\
+import java.io.*;\
+import java.util.*;\
+\
+/*\
+ * To execute Java, please define "static void main" on a class\
+ * named Solution.\
+ *\
+ * If you need more classes, simply define them inline.\
+ */\
+\
+class Solution \{\
+  List<String> allowedWords = Arrays.asList("zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety","hundred","thousand","million","billion","trillion");\
+  public static String convertWordToInt(String word) \{\
+    String input = word.toLowerCase().replaceAll(" and"," ");\
+    String[] splitWords = input.split("\\\\s+");\
+    long res=0,finalRes=0;\
+    boolean isError=false;\
+    String resStr=null;\
+    \
+    for(String w: splitWords) \{\
+      switch(w) \{\
+        case "zero": \
+          res+=0;\
+          break;\
+        case "one":\
+          res+=1;\
+          break;\
+        case "two":\
+          res+=2;\
+          break;\
+        case"three":\
+          res+=3;\
+          break;\
+        case "four":\
+          res+=4;\
+          break;\
+        case"five":\
+          res+=5;\
+          break;\
+        case "six":\
+          res+=6;\
+          break;\
+        case "seven":\
+          res+=7;\
+          break;\
+        case "eight":\
+          res+=8;\
+          break;\
+        case "nine":\
+          res+=9;\
+          break;\
+        case "ten":\
+          res+=10;\
+          break;\
+        case "eleven":\
+          res+=11;\
+          break;\
+        case "twelve":\
+          res+=12;\
+          break;\
+        case "thirteen":\
+          res+=13;\
+          break;\
+        case "fourteen":\
+          res+=14;\
+          break;\
+        case "fifteen":\
+          res+=15;\
+          break;\
+        case "sixteen":\
+          res+=16;\
+          break;\
+        case "seventeen":\
+          res+=17;\
+          break;\
+        case "eighteen":\
+          res+=18;\
+          break;\
+        case "nineteen":\
+          res+=19;\
+          break;\
+        case "twenty":\
+          res+=20;\
+          break;\
+        case "thirty":\
+          res+=30;\
+          break;\
+        case "forty":\
+          res+=40;\
+          break;\
+        case "fifty":\
+          res+=50;\
+          break;\
+        case "sixty":\
+          res+=60;\
+          break;\
+        case "seventy":\
+          res+=70;\
+          break;\
+        case "eighty":\
+          res+=80;\
+          break;\
+        case "ninety":\
+          res+=90;\
+          break;\
+        case "hundred":\
+          res*=100;\
+          break;\
+        case "thousand": \
+          res*=1000;\
+          finalRes+=res;\
+          res=0;\
+          break;\
+        case "million":\
+          res*=1000000;\
+          finalRes+=res;\
+          res=0;\
+          break;\
+        case "billion":\
+          res*=1000000000;\
+          finalRes+=res;\
+          res=0;\
+          break;\
+        case "trillion": \
+          res*=1000000000000L;\
+          finalRes+=res;\
+          res=0;\
+          break;\
+        default:\
+          resStr="Invalid Argument Exception";\
+          break;\
+      \}\
+    \}\
+    finalRes+=res;\
+  \
+    return resStr==null?String.valueOf(finalRes):resStr;\
+      \
+  \}\
+  \
+  public static String add(String num1,String num2) throws Exception\{\
+    String n1=null,n2=null;\
+    long l1=0,l2=0;\
+    String res=null;\
+    try \{\
+      n1= convertWordToInt(num1);\
+      l1=Long.parseLong(n1);\
+    \}catch(Exception e) \{\
+      res = "Invalid Argument Exception";\
+    \}\
+    if(res==null) \{\
+      try \{\
+      n2= convertWordToInt(num2);\
+      l2=Long.parseLong(n2);\
+    \}catch(Exception e) \{\
+        res = "Invalid Argument Exception";\
+    \}\
+    \}\
+   \
+    return res!=null?res:String.valueOf(l1+l2);\
+  \}\
+  public static String subtract(String num1,String num2) throws Exception \{\
+    String n1=null,n2=null;\
+    long l1=0,l2=0;\
+    String res=null;\
+    try \{\
+      n1= convertWordToInt(num1);\
+      l1=Long.parseLong(n1);\
+    \}catch(Exception e) \{\
+      res = "Invalid Argument.Please validate your input.";\
+    \}\
+    if(res==null) \{\
+      try \{\
+      n2= convertWordToInt(num2);\
+      l2=Long.parseLong(n2);\
+    \}catch(Exception e) \{\
+        res = "Invalid Argument.Please validate your input.";\
+    \}\
+    \}\
+   \
+    return res!=null?res:String.valueOf(l1-l2);\
+  \}\
+  public static String multiply(String num1,String num2) throws Exception \{\
+    if(num1.equalsIgnoreCase("zero") || num2.equalsIgnoreCase("zero") )\
+      return "0";\
+    String n1=null,n2=null;\
+    long l1=0,l2=0;\
+    String res=null;\
+    try \{\
+      n1= convertWordToInt(num1);\
+      l1=Long.parseLong(n1);\
+    \}catch(Exception e) \{\
+      res = "Invalid Argument.Please validate your input.";\
+    \}\
+    if(res==null) \{\
+      try \{\
+      n2= convertWordToInt(num2);\
+      l2=Long.parseLong(n2);\
+    \}catch(Exception e) \{\
+        res = "Invalid Argument.Please validate your input.";\
+    \}\
+    \}\
+   \
+    return res!=null?res:String.valueOf(l1*l2);\
+  \}\
+  public static String divide(String num1,String num2)  \{\
+    String res=null;\
+    if(num2.equalsIgnoreCase("zero"))\
+       res = "Division by Zero Error";\
+    String n1=null,n2=null;\
+    long l1=0,l2=0;\
+    if(res!=null)\
+      return res;\
+    try \{\
+      n1= convertWordToInt(num1);\
+      l1=Long.parseLong(n1);\
+    \}catch(Exception e) \{\
+      res = "Invalid Argument.Please validate your input.";\
+    \}\
+    if(res==null) \{\
+      try \{\
+      n2= convertWordToInt(num2);\
+      l2=Long.parseLong(n2);\
+    \}catch(Exception e) \{\
+        res = "Invalid Argument.Please validate your input.";\
+    \}\
+    \}\
+   \
+    return res!=null?res:String.valueOf(l1/(double)l2);\
+  \}\
+  public static void main(String[] args) throws Exception\{\
+    try \{\
+    System.out.println(convertWordToInt("Ten"));\
+     System.out.println(convertWordToInt("fifty one"));\
+     System.out.println(convertWordToInt("three hundred fifty one"));\
+     System.out.println(convertWordToInt("Four Thousand Three Hundred fifty one"));\
+     System.out.println(convertWordToInt("fifty three thousand"));\
+    System.out.println(add("three hundred and fifty","four thousand and twenty two"));\
+    System.out.println(subtract("three ihundred and fifty","four thousand and twenty two"));\
+    System.out.println(multiply("three hundred and fifty","four thousand and twenty two"));\
+    System.out.println(divide("three hundred and fifty","four thousand and twenty two"));\
+      System.out.println(divide("three hundred and fifty","zero"));\
+    \}catch(Exception e) \{\
+      e.printStackTrace();\
+      System.out.println(e);\
+    \}\
+     \
+  \}\
+\}\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+Output\
+\
+10\
+51\
+351\
+4351\
+53000\
+4372\
+Invalid Argument.Please validate your input.\
+1407700\
+0.0870213823968175\
+Division by Zero Error\
+}
